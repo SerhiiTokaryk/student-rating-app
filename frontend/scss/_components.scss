@@ -1,0 +1,378 @@
+// =============================================================================
+// Components
+// =============================================================================
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// Buttons
+.btn {
+    @include button-base;
+
+    &--primary {
+        background-color: $color-accent;
+        color: #fff;
+
+        &:hover {
+            background-color: $color-accent-hover;
+            box-shadow: $shadow-sm;
+        }
+    }
+
+    &--danger {
+        background-color: $color-danger;
+        color: #fff;
+
+        &:hover {
+            background-color: $color-danger-hover;
+        }
+    }
+
+    &--ghost {
+        background-color: transparent;
+        color: $color-text-secondary;
+        border: 1px solid $color-border;
+
+        &:hover {
+            background-color: $color-surface-alt;
+            color: $color-text-primary;
+        }
+    }
+
+    &--sm {
+        padding: $space-xs $space-md;
+        font-size: $font-size-xs;
+    }
+
+    &--full {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+// Form elements
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: $space-xs;
+    margin-bottom: $space-md;
+
+    &__label {
+        font-size: $font-size-sm;
+        font-weight: 600;
+        color: $color-text-secondary;
+        letter-spacing: 0.03em;
+    }
+
+    &__input {
+        @include input-base;
+    }
+
+    &__select {
+        @include input-base;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%238b90a8' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right $space-md center;
+        padding-right: $space-2xl;
+        cursor: pointer;
+    }
+
+    &__error {
+        font-size: $font-size-xs;
+        color: $color-danger;
+        display: none;
+
+        &--visible {
+            display: block;
+        }
+    }
+}
+
+// Input validation states
+.form-group__input--error,
+.form-group__select--error {
+    border-color: $color-danger;
+
+    &:focus {
+        box-shadow: 0 0 0 3px rgba($color-danger, 0.15);
+    }
+}
+
+// Card
+.card {
+    @include card;
+    padding: $space-xl;
+}
+
+// Login card
+.login-card {
+    @include card;
+    padding: $space-2xl;
+    width: 100%;
+    max-width: 420px;
+    animation: slide-up 0.4s ease;
+
+    &__title {
+        font-size: $font-size-xl;
+        font-weight: 700;
+        margin-bottom: $space-xs;
+        color: $color-text-primary;
+    }
+
+    &__subtitle {
+        font-size: $font-size-sm;
+        color: $color-text-secondary;
+        margin-bottom: $space-xl;
+    }
+}
+
+// Data table
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: $font-size-sm;
+
+    &__head {
+        th {
+            padding: $space-sm $space-md;
+            text-align: left;
+            font-size: $font-size-xs;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: $color-text-muted;
+            border-bottom: 1px solid $color-border;
+        }
+    }
+
+    &__body {
+        tr {
+            border-bottom: 1px solid rgba($color-border, 0.5);
+            transition: background-color $transition-fast;
+
+            &:hover {
+                background-color: $color-surface-alt;
+            }
+
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+
+        td {
+            padding: $space-md;
+            color: $color-text-primary;
+            vertical-align: middle;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        gap: $space-sm;
+    }
+}
+
+// Badge
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: $space-xs $space-sm;
+    border-radius: $radius-sm;
+    font-size: $font-size-xs;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+
+    &--admin {
+        background-color: rgba($color-accent, 0.15);
+        color: $color-accent;
+    }
+
+    &--regular {
+        background-color: rgba($color-text-muted, 0.15);
+        color: $color-text-secondary;
+    }
+
+    &--score {
+        background-color: rgba($color-success, 0.12);
+        color: $color-success;
+        font-family: $font-mono;
+    }
+}
+
+// Modal overlay
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    @include flex-center;
+    z-index: 200;
+    backdrop-filter: blur(4px);
+    animation: fade-in 0.2s ease;
+
+    &--hidden {
+        display: none;
+    }
+}
+
+.modal {
+    @include card;
+    padding: $space-xl;
+    width: 100%;
+    max-width: 480px;
+    animation: slide-up 0.25s ease;
+
+    @include respond-to(mobile) {
+        margin: $space-md;
+    }
+
+    &__header {
+        @include flex-between;
+        margin-bottom: $space-lg;
+    }
+
+    &__title {
+        font-size: $font-size-lg;
+        font-weight: 700;
+    }
+
+    &__close {
+        @include button-base;
+        background: none;
+        color: $color-text-muted;
+        padding: $space-xs;
+        border-radius: $radius-sm;
+
+        &:hover {
+            color: $color-text-primary;
+            background-color: $color-surface-alt;
+        }
+    }
+
+    &__footer {
+        @include flex-between;
+        margin-top: $space-lg;
+        gap: $space-sm;
+    }
+}
+
+// Notification
+.notification {
+    position: fixed;
+    bottom: $space-xl;
+    right: $space-xl;
+    padding: $space-md $space-lg;
+    border-radius: $radius-md;
+    font-size: $font-size-sm;
+    font-weight: 500;
+    box-shadow: $shadow-lg;
+    z-index: 300;
+    animation: slide-up 0.3s ease;
+    max-width: 360px;
+
+    &--success {
+        background-color: $color-success;
+        color: #0a1f14;
+    }
+
+    &--error {
+        background-color: $color-danger;
+        color: #fff;
+    }
+
+    &--hidden {
+        display: none;
+    }
+}
+
+// Rating bar (for students page)
+.rating-bar {
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+
+    &__track {
+        flex: 1;
+        height: 6px;
+        background-color: $color-surface-alt;
+        border-radius: 3px;
+        overflow: hidden;
+        max-width: 120px;
+    }
+
+    &__fill {
+        height: 100%;
+        background: linear-gradient(90deg, $color-accent, $color-success);
+        border-radius: 3px;
+        transition: width $transition-normal;
+    }
+
+    &__value {
+        font-family: $font-mono;
+        font-size: $font-size-sm;
+        color: $color-success;
+        min-width: 40px;
+    }
+}
+
+// Rank medal (top-3)
+.rank {
+    font-family: $font-mono;
+    font-size: $font-size-sm;
+    font-weight: 700;
+    color: $color-text-muted;
+
+    &--first  { color: #f5c518; }
+    &--second { color: #b0b0b0; }
+    &--third  { color: #cd7f32; }
+}
+
+// Empty state
+.empty-state {
+    @include flex-center;
+    flex-direction: column;
+    gap: $space-md;
+    padding: $space-2xl;
+    color: $color-text-muted;
+
+    &__icon {
+        font-size: 2.5rem;
+    }
+
+    &__text {
+        font-size: $font-size-sm;
+    }
+}
+
+// Filter bar
+.filter-bar {
+    @include flex-between;
+    gap: $space-md;
+    margin-bottom: $space-lg;
+    flex-wrap: wrap;
+
+    &__group {
+        display: flex;
+        align-items: center;
+        gap: $space-sm;
+    }
+}
+
+// Animations
+@keyframes slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}

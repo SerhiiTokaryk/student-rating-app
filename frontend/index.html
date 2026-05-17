@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Student Rating System — login page">
+    <title>Вхід — Student Rating</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+    <!-- Login page wrapper -->
+    <main class="login-page">
+
+        <!-- Login card -->
+        <section class="login-card" aria-label="Форма входу">
+            <h1 class="login-card__title">Student Rating</h1>
+            <p class="login-card__subtitle">Увійдіть, щоб продовжити</p>
+
+            <!-- Login form -->
+            <form id="login-form" novalidate>
+
+                <!-- Username field -->
+                <div class="form-group">
+                    <label class="form-group__label" for="username">Логін</label>
+                    <input
+                        class="form-group__input"
+                        id="username"
+                        type="text"
+                        name="username"
+                        placeholder="Введіть логін"
+                        autocomplete="username"
+                        required
+                    >
+                    <span class="form-group__error" id="username-error">Введіть логін</span>
+                </div>
+
+                <!-- Password field -->
+                <div class="form-group">
+                    <label class="form-group__label" for="password">Пароль</label>
+                    <input
+                        class="form-group__input"
+                        id="password"
+                        type="password"
+                        name="password"
+                        placeholder="Введіть пароль"
+                        autocomplete="current-password"
+                        required
+                    >
+                    <span class="form-group__error" id="password-error">Введіть пароль</span>
+                </div>
+
+                <!-- Submit button -->
+                <button class="btn btn--primary btn--full" type="submit">
+                    Увійти
+                </button>
+
+                <!-- Auth error message -->
+                <span class="form-group__error" id="auth-error"></span>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <!-- Success / error notification -->
+    <div class="notification notification--hidden" id="notification" role="alert" aria-live="polite"></div>
+
+</body>
+</html>
