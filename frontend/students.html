@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Рейтинг студентів — список та фільтрація за групою">
+    <title>Рейтинг — Student Rating</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+    <!-- App shell grid -->
+    <div class="app-shell">
+
+        <!-- Header -->
+        <header class="header" role="banner">
+            <span class="header__logo">student/rating</span>
+            <div class="header__actions">
+                <span class="header__user" id="header-username">...</span>
+                <a class="btn btn--ghost btn--sm" href="index.html" id="logout-btn">Вийти</a>
+            </div>
+        </header>
+
+        <!-- Sidebar navigation -->
+        <nav class="sidebar" aria-label="Головна навігація">
+            <p class="sidebar__label">Меню</p>
+            <ul class="sidebar__nav">
+                <li>
+                    <a class="sidebar__link" href="users.html">
+                        Користувачі
+                    </a>
+                </li>
+                <li>
+                    <a class="sidebar__link sidebar__link--active" href="students.html" aria-current="page">
+                        Рейтинг студентів
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main content -->
+        <main class="main-content">
+
+            <!-- Page header -->
+            <div class="page-header">
+                <div>
+                    <h1 class="page-header__title">Рейтинг студентів</h1>
+                    <p class="page-header__subtitle">Варіант 12 — перегляд та виставлення балів</p>
+                </div>
+                <a class="btn btn--primary" href="student-form.html" id="add-student-btn">
+                    + Додати студента
+                </a>
+            </div>
+
+            <!-- Filter bar -->
+            <div class="filter-bar">
+                <div class="filter-bar__group">
+                    <label class="form-group__label" for="group-filter">Фільтр за групою:</label>
+                    <select class="form-group__select" id="group-filter" style="width: auto; min-width: 140px;">
+                        <option value="">Всі групи</option>
+                        <!-- Options populated by JS in Lab 2 -->
+                        <option value="ІП-31">ІП-31</option>
+                        <option value="ІП-32">ІП-32</option>
+                        <option value="КН-21">КН-21</option>
+                    </select>
+                </div>
+                <div class="filter-bar__group">
+                    <label class="form-group__label" for="top-filter">Показати топ:</label>
+                    <select class="form-group__select" id="top-filter" style="width: auto; min-width: 100px;">
+                        <option value="">Всі</option>
+                        <option value="5">Топ 5</option>
+                        <option value="10">Топ 10</option>
+                        <option value="20">Топ 20</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Students table card -->
+            <div class="card" style="padding: 0; overflow: hidden;">
+                <table class="data-table" aria-label="Таблиця рейтингу студентів">
+                    <thead class="data-table__head">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Прізвище та ім'я</th>
+                            <th scope="col">Група</th>
+                            <th scope="col">Рейтинг</th>
+                            <th scope="col">Дії</th>
+                        </tr>
+                    </thead>
+                    <tbody class="data-table__body" id="students-tbody">
+
+                        <!-- Static example rows (replaced by JS in Lab 2) -->
+                        <tr>
+                            <td><span class="rank rank--first">1</span></td>
+                            <td>Шевченко Тарас</td>
+                            <td>ІП-31</td>
+                            <td>
+                                <div class="rating-bar">
+                                    <div class="rating-bar__track">
+                                        <div class="rating-bar__fill" style="width: 95%;"></div>
+                                    </div>
+                                    <span class="rating-bar__value">95.00</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="data-table__actions">
+                                    <a class="btn btn--ghost btn--sm" href="student-form.html?id=1">Редагувати</a>
+                                    <button class="btn btn--danger btn--sm" type="button">Видалити</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="rank rank--second">2</span></td>
+                            <td>Франко Іван</td>
+                            <td>ІП-32</td>
+                            <td>
+                                <div class="rating-bar">
+                                    <div class="rating-bar__track">
+                                        <div class="rating-bar__fill" style="width: 88%;"></div>
+                                    </div>
+                                    <span class="rating-bar__value">88.00</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="data-table__actions">
+                                    <a class="btn btn--ghost btn--sm" href="student-form.html?id=2">Редагувати</a>
+                                    <button class="btn btn--danger btn--sm" type="button">Видалити</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="rank rank--third">3</span></td>
+                            <td>Леся Українка</td>
+                            <td>КН-21</td>
+                            <td>
+                                <div class="rating-bar">
+                                    <div class="rating-bar__track">
+                                        <div class="rating-bar__fill" style="width: 76%;"></div>
+                                    </div>
+                                    <span class="rating-bar__value">76.00</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="data-table__actions">
+                                    <a class="btn btn--ghost btn--sm" href="student-form.html?id=3">Редагувати</a>
+                                    <button class="btn btn--danger btn--sm" type="button">Видалити</button>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- Delete confirmation modal -->
+    <div class="modal-overlay modal-overlay--hidden" id="delete-modal" role="dialog" aria-modal="true" aria-labelledby="delete-modal-title">
+        <div class="modal">
+            <div class="modal__header">
+                <h2 class="modal__title" id="delete-modal-title">Видалити студента?</h2>
+                <button class="modal__close" type="button" id="delete-modal-close" aria-label="Закрити">✕</button>
+            </div>
+            <p style="color: var(--color-text-secondary, #8b90a8); font-size: 0.875rem;">
+                Цю дію неможливо скасувати.
+            </p>
+            <div class="modal__footer">
+                <button class="btn btn--ghost" type="button" id="delete-cancel">Скасувати</button>
+                <button class="btn btn--danger" type="button" id="delete-confirm">Видалити</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification notification--hidden" id="notification" role="alert" aria-live="polite"></div>
+
+
+<script type="module" src="js/header.js"></script>
+<script type="module" src="js/students.js"></script>
+</body>
+</html>

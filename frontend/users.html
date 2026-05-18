@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Список користувачів системи рейтингу студентів">
+    <title>Користувачі — Student Rating</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+    <!-- App shell grid -->
+    <div class="app-shell">
+
+        <!-- Header -->
+        <header class="header" role="banner">
+            <span class="header__logo">student/rating</span>
+            <div class="header__actions">
+                <span class="header__user" id="header-username">...</span>
+                <a class="btn btn--ghost btn--sm" href="index.html" id="logout-btn">Вийти</a>
+            </div>
+        </header>
+
+        <!-- Sidebar navigation -->
+        <nav class="sidebar" aria-label="Головна навігація">
+            <p class="sidebar__label">Меню</p>
+            <ul class="sidebar__nav">
+                <li>
+                    <a class="sidebar__link sidebar__link--active" href="users.html" aria-current="page">
+                        Користувачі
+                    </a>
+                </li>
+                <li>
+                    <a class="sidebar__link" href="students.html">
+                        Рейтинг студентів
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main content -->
+        <main class="main-content" id="main">
+
+            <!-- Page header -->
+            <div class="page-header">
+                <div>
+                    <h1 class="page-header__title">Користувачі</h1>
+                    <p class="page-header__subtitle">Управління акаунтами системи</p>
+                </div>
+                <a class="btn btn--primary" href="user-form.html" id="add-user-btn">
+                    + Додати користувача
+                </a>
+            </div>
+
+            <!-- Users table card -->
+            <div class="card" style="padding: 0; overflow: hidden;">
+                <table class="data-table" aria-label="Таблиця користувачів">
+                    <thead class="data-table__head">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Логін</th>
+                            <th scope="col">Роль</th>
+                            <th scope="col">Дії</th>
+                        </tr>
+                    </thead>
+                    <tbody class="data-table__body" id="users-tbody">
+
+                        <!-- Static example row (removed in Lab 2 by JS) -->
+                        <tr>
+                            <td>1</td>
+                            <td>admin</td>
+                            <td><span class="badge badge--admin">admin</span></td>
+                            <td>
+                                <div class="data-table__actions">
+                                    <a class="btn btn--ghost btn--sm" href="user-form.html?id=1">Редагувати</a>
+                                    <button class="btn btn--danger btn--sm" type="button">Видалити</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>student_user</td>
+                            <td><span class="badge badge--regular">regular</span></td>
+                            <td>
+                                <div class="data-table__actions">
+                                    <a class="btn btn--ghost btn--sm" href="user-form.html?id=2">Редагувати</a>
+                                    <button class="btn btn--danger btn--sm" type="button">Видалити</button>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- Delete confirmation modal -->
+    <div class="modal-overlay modal-overlay--hidden" id="delete-modal" role="dialog" aria-modal="true" aria-labelledby="delete-modal-title">
+        <div class="modal">
+            <div class="modal__header">
+                <h2 class="modal__title" id="delete-modal-title">Видалити користувача?</h2>
+                <button class="modal__close" type="button" id="delete-modal-close" aria-label="Закрити">✕</button>
+            </div>
+            <p style="color: var(--color-text-secondary, #8b90a8); font-size: 0.875rem;">
+                Цю дію неможливо скасувати. Користувача буде видалено назавжди.
+            </p>
+            <div class="modal__footer">
+                <button class="btn btn--ghost" type="button" id="delete-cancel">Скасувати</button>
+                <button class="btn btn--danger" type="button" id="delete-confirm">Видалити</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification notification--hidden" id="notification" role="alert" aria-live="polite"></div>
+
+
+<script type="module" src="js/header.js"></script>
+<script type="module" src="js/users.js"></script>
+</body>
+</html>
