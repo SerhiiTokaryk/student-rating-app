@@ -1,0 +1,61 @@
+// =============================================================================
+// Reset & Base
+// =============================================================================
+
+@use 'variables' as *;
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: $font-primary;
+    font-size: $font-size-md;
+    background-color: $color-bg;
+    color: $color-text-primary;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+a {
+    color: $color-accent;
+    text-decoration: none;
+    transition: color $transition-fast;
+
+    &:hover {
+        color: $color-accent-hover;
+    }
+
+    &:visited {
+        color: $color-accent;
+    }
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+button {
+    cursor: pointer;
+}
+
+input,
+select,
+textarea {
+    font-family: $font-primary;
+}

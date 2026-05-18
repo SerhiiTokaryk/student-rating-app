@@ -1,0 +1,150 @@
+// =============================================================================
+// Layout
+// =============================================================================
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// App shell (used on all pages except login)
+.app-shell {
+    display: grid;
+    grid-template-columns: $sidebar-width 1fr;
+    grid-template-rows: $header-height 1fr;
+    min-height: 100vh;
+
+    @include respond-to(tablet) {
+        grid-template-columns: 1fr;
+        grid-template-rows: $header-height 1fr;
+    }
+}
+
+// Header
+.header {
+    @include flex-between;
+    grid-column: 1 / -1;
+    padding: 0 $space-xl;
+    background-color: $color-surface;
+    border-bottom: 1px solid $color-border;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    &__logo {
+        font-family: $font-mono;
+        font-size: $font-size-lg;
+        font-weight: 700;
+        color: $color-accent;
+        letter-spacing: -0.5px;
+    }
+
+    &__actions {
+        @include flex-center;
+        gap: $space-md;
+    }
+
+    &__user {
+        font-size: $font-size-sm;
+        color: $color-text-secondary;
+    }
+}
+
+// Sidebar
+.sidebar {
+    background-color: $color-surface;
+    border-right: 1px solid $color-border;
+    padding: $space-xl 0;
+
+    @include respond-to(tablet) {
+        display: none;
+    }
+
+    &__nav {
+        display: flex;
+        flex-direction: column;
+        gap: $space-xs;
+    }
+
+    &__link {
+        @include flex-center;
+        justify-content: flex-start;
+        gap: $space-sm;
+        padding: $space-sm $space-xl;
+        color: $color-text-secondary;
+        font-size: $font-size-sm;
+        font-weight: 500;
+        border-left: 3px solid transparent;
+        transition: color $transition-fast, background-color $transition-fast, border-color $transition-fast;
+
+        &:hover {
+            color: $color-text-primary;
+            background-color: $color-surface-alt;
+        }
+
+        &:visited {
+            color: $color-text-secondary;
+        }
+
+        &--active {
+            color: $color-accent;
+            border-left-color: $color-accent;
+            background-color: rgba($color-accent, 0.08);
+
+            &:visited {
+                color: $color-accent;
+            }
+        }
+    }
+
+    &__label {
+        padding: $space-md $space-xl $space-xs;
+        font-size: $font-size-xs;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: $color-text-muted;
+    }
+}
+
+// Main content
+.main-content {
+    padding: $space-xl;
+    overflow-y: auto;
+
+    @include respond-to(tablet) {
+        padding: $space-md;
+    }
+}
+
+// Page header
+.page-header {
+    @include flex-between;
+    margin-bottom: $space-xl;
+
+    @include respond-to(mobile) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: $space-md;
+    }
+
+    &__title {
+        font-size: $font-size-xl;
+        font-weight: 700;
+        color: $color-text-primary;
+    }
+
+    &__subtitle {
+        font-size: $font-size-sm;
+        color: $color-text-secondary;
+        margin-top: $space-xs;
+    }
+}
+
+// Login page layout
+.login-page {
+    @include flex-center;
+    min-height: 100vh;
+    background-color: $color-bg;
+    background-image:
+        radial-gradient(ellipse at 20% 50%, rgba($color-accent, 0.05) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba($color-success, 0.04) 0%, transparent 50%);
+}

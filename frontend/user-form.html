@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Створення або редагування користувача">
+    <title>Користувач — Student Rating</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+    <!-- App shell grid -->
+    <div class="app-shell">
+
+        <!-- Header -->
+        <header class="header" role="banner">
+            <span class="header__logo">student/rating</span>
+            <div class="header__actions">
+                <span class="header__user" id="header-username">...</span>
+                <a class="btn btn--ghost btn--sm" href="index.html" id="logout-btn">Вийти</a>
+            </div>
+        </header>
+
+        <!-- Sidebar navigation -->
+        <nav class="sidebar" aria-label="Головна навігація">
+            <p class="sidebar__label">Меню</p>
+            <ul class="sidebar__nav">
+                <li>
+                    <a class="sidebar__link sidebar__link--active" href="users.html">
+                        Користувачі
+                    </a>
+                </li>
+                <li>
+                    <a class="sidebar__link" href="students.html">
+                        Рейтинг студентів
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main content -->
+        <main class="main-content">
+
+            <!-- Page header -->
+            <div class="page-header">
+                <div>
+                    <!-- Title changes via JS: "Новий користувач" or "Редагувати користувача" -->
+                    <h1 class="page-header__title" id="form-title">Новий користувач</h1>
+                    <p class="page-header__subtitle">Заповніть поля нижче</p>
+                </div>
+                <a class="btn btn--ghost" href="users.html">← Назад</a>
+            </div>
+
+            <!-- Form card -->
+            <div class="card" style="max-width: 520px;">
+                <form id="user-form" novalidate>
+
+                    <!-- Username -->
+                    <div class="form-group">
+                        <label class="form-group__label" for="username">Логін</label>
+                        <input
+                            class="form-group__input"
+                            id="username"
+                            type="text"
+                            name="username"
+                            placeholder="Введіть логін"
+                            autocomplete="off"
+                            required
+                            minlength="3"
+                        >
+                        <span class="form-group__error" id="username-error">Логін має містити не менше 3 символів</span>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="form-group">
+                        <label class="form-group__label" for="password">Пароль</label>
+                        <input
+                            class="form-group__input"
+                            id="password"
+                            type="password"
+                            name="password"
+                            placeholder="Введіть пароль (залиште порожнім для збереження)"
+                            autocomplete="new-password"
+                            minlength="6"
+                        >
+                        <span class="form-group__error" id="password-error">Пароль має містити не менше 6 символів</span>
+                    </div>
+
+                    <!-- Confirm password -->
+                    <div class="form-group">
+                        <label class="form-group__label" for="confirm-password">Підтвердження пароля</label>
+                        <input
+                            class="form-group__input"
+                            id="confirm-password"
+                            type="password"
+                            name="confirm_password"
+                            placeholder="Повторіть пароль"
+                            autocomplete="new-password"
+                        >
+                        <span class="form-group__error" id="confirm-error">Паролі не співпадають</span>
+                    </div>
+
+                    <!-- Role -->
+                    <div class="form-group">
+                        <label class="form-group__label" for="role">Роль</label>
+                        <select class="form-group__select" id="role" name="role" required>
+                            <option value="regular">Regular</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+
+                    <!-- Form actions -->
+                    <div style="display: flex; gap: 0.5rem; margin-top: 1.5rem;">
+                        <button class="btn btn--primary" type="submit" id="submit-btn">Зберегти</button>
+                        <a class="btn btn--ghost" href="users.html">Скасувати</a>
+                    </div>
+
+                </form>
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- Notification -->
+    <div class="notification notification--hidden" id="notification" role="alert" aria-live="polite"></div>
+
+
+<script type="module" src="js/header.js"></script>
+<script type="module" src="js/user-form.js"></script>
+</body>
+</html>
