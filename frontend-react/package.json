@@ -16,8 +16,21 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "lint": "eslint src/**/*.js src/**/*.jsx --ignore-pattern node_modules/"
-},
+    "lint": "eslint src/**/*.js src/**/*.jsx --ignore-pattern node_modules/",
+    "test": "react-scripts test --coverage --watchAll=false"
+  },
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "lines": 70
+      }
+    },
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!src/index.jsx",
+      "!src/**/*.test.{js,jsx}"
+    ]
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
