@@ -1,11 +1,7 @@
-// =============================================================================
-// Components
-// =============================================================================
-
 @use 'variables' as *;
 @use 'mixins' as *;
 
-// Buttons
+
 .btn {
     @include button-base;
 
@@ -50,7 +46,6 @@
     }
 }
 
-// Form elements
 .form-group {
     display: flex;
     flex-direction: column;
@@ -89,7 +84,6 @@
     }
 }
 
-// Input validation states
 .form-group__input--error,
 .form-group__select--error {
     border-color: $color-danger;
@@ -99,13 +93,11 @@
     }
 }
 
-// Card
 .card {
     @include card;
     padding: $space-xl;
 }
 
-// Login card
 .login-card {
     @include card;
     padding: $space-2xl;
@@ -127,7 +119,6 @@
     }
 }
 
-// Data table
 .data-table {
     width: 100%;
     border-collapse: collapse;
@@ -173,7 +164,6 @@
     }
 }
 
-// Badge
 .badge {
     display: inline-flex;
     align-items: center;
@@ -201,7 +191,6 @@
     }
 }
 
-// Modal overlay
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -257,7 +246,6 @@
     }
 }
 
-// Notification
 .notification {
     position: fixed;
     bottom: $space-xl;
@@ -286,7 +274,6 @@
     }
 }
 
-// Rating bar (for students page)
 .rating-bar {
     display: flex;
     align-items: center;
@@ -316,7 +303,6 @@
     }
 }
 
-// Rank medal (top-3)
 .rank {
     font-family: $font-mono;
     font-size: $font-size-sm;
@@ -328,7 +314,6 @@
     &--third  { color: #cd7f32; }
 }
 
-// Empty state
 .empty-state {
     @include flex-center;
     flex-direction: column;
@@ -345,7 +330,6 @@
     }
 }
 
-// Filter bar
 .filter-bar {
     @include flex-between;
     gap: $space-md;
@@ -359,7 +343,6 @@
     }
 }
 
-// Animations
 @keyframes slide-up {
     from {
         opacity: 0;

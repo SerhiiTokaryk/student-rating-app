@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6fc5e61f-1a84-42bb-88bc-8e08f481acea" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/pages/UsersPage/UsersPage.test" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/pages/UsersPage/UsersPage.test.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

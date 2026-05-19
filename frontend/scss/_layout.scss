@@ -1,11 +1,6 @@
-// =============================================================================
-// Layout
-// =============================================================================
-
 @use 'variables' as *;
 @use 'mixins' as *;
 
-// App shell (used on all pages except login)
 .app-shell {
     display: grid;
     grid-template-columns: $sidebar-width 1fr;
@@ -18,7 +13,6 @@
     }
 }
 
-// Header
 .header {
     @include flex-between;
     grid-column: 1 / -1;
@@ -48,7 +42,6 @@
     }
 }
 
-// Sidebar
 .sidebar {
     background-color: $color-surface;
     border-right: 1px solid $color-border;
@@ -105,7 +98,6 @@
     }
 }
 
-// Main content
 .main-content {
     padding: $space-xl;
     overflow-y: auto;
@@ -115,7 +107,6 @@
     }
 }
 
-// Page header
 .page-header {
     @include flex-between;
     margin-bottom: $space-xl;
@@ -139,7 +130,6 @@
     }
 }
 
-// Login page layout
 .login-page {
     @include flex-center;
     min-height: 100vh;
