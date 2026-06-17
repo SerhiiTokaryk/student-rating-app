@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Створення або редагування студента, виставлення балів">
+    <title>Студент — Student Rating</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+    <!-- App shell grid -->
+    <div class="app-shell">
+
+        <!-- Header -->
+        <header class="header" role="banner">
+            <span class="header__logo">student/rating</span>
+            <div class="header__actions">
+                <span class="header__user" id="header-username">...</span>
+                <a class="btn btn--ghost btn--sm" href="index.html" id="logout-btn">Вийти</a>
+            </div>
+        </header>
+
+        <!-- Sidebar navigation -->
+        <nav class="sidebar" aria-label="Головна навігація">
+            <p class="sidebar__label">Меню</p>
+            <ul class="sidebar__nav">
+                <li>
+                    <a class="sidebar__link" href="users.html">
+                        Користувачі
+                    </a>
+                </li>
+                <li>
+                    <a class="sidebar__link sidebar__link--active" href="students.html">
+                        Рейтинг студентів
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main content -->
+        <main class="main-content">
+
+            <!-- Page header -->
+            <div class="page-header">
+                <div>
+                    <!-- Title changes via JS -->
+                    <h1 class="page-header__title" id="form-title">Новий студент</h1>
+                    <p class="page-header__subtitle">Заповніть поля нижче</p>
+                </div>
+                <a class="btn btn--ghost" href="students.html">← Назад</a>
+            </div>
+
+            <!-- Form card -->
+            <div class="card" style="max-width: 520px;">
+                <form id="student-form" novalidate>
+
+                    <!-- Full name -->
+                    <div class="form-group">
+                        <label class="form-group__label" for="full-name">Прізвище та ім'я</label>
+                        <input
+                            class="form-group__input"
+                            id="full-name"
+                            type="text"
+                            name="full_name"
+                            placeholder="Наприклад: Шевченко Тарас"
+                            required
+                            minlength="3"
+                        >
+                        <span class="form-group__error" id="full-name-error">Введіть повне ім'я (не менше 3 символів)</span>
+                    </div>
+
+                    <!-- Group -->
+                    <div class="form-group">
+                        <label class="form-group__label" for="group-name">Група</label>
+                        <input
+                            class="form-group__input"
+                            id="group-name"
+                            type="text"
+                            name="group_name"
+                            placeholder="Наприклад: ІП-31"
+                            required
+                        >
+                        <span class="form-group__error" id="group-name-error">Введіть назву групи</span>
+                    </div>
+
+                    <!-- Rating score -->
+                    <div class="form-group">
+                        <label class="form-group__label" for="rating-score">Рейтинговий бал (0–100)</label>
+                        <input
+                            class="form-group__input"
+                            id="rating-score"
+                            type="number"
+                            name="rating_score"
+                            placeholder="0.00"
+                            min="0"
+                            max="100"
+                            step="0.01"
+                            value="0"
+                        >
+                        <span class="form-group__error" id="rating-error">Бал має бути від 0 до 100</span>
+                    </div>
+
+                    <!-- Form actions -->
+                    <div style="display: flex; gap: 0.5rem; margin-top: 1.5rem;">
+                        <button class="btn btn--primary" type="submit" id="submit-btn">Зберегти</button>
+                        <a class="btn btn--ghost" href="students.html">Скасувати</a>
+                    </div>
+
+                </form>
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- Notification -->
+    <div class="notification notification--hidden" id="notification" role="alert" aria-live="polite"></div>
+
+
+<script type="module" src="js/header.js"></script>
+<script type="module" src="js/student-form.js"></script>
+</body>
+</html>

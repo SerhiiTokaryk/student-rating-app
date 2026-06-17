@@ -1,0 +1,77 @@
+
+@use 'variables' as *;
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin card {
+    background-color: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-md;
+}
+
+@mixin input-base {
+    width: 100%;
+    padding: $space-sm $space-md;
+    background-color: $color-surface-alt;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    color: $color-text-primary;
+    font-family: $font-primary;
+    font-size: $font-size-md;
+    transition: border-color $transition-fast, box-shadow $transition-fast;
+
+    &:focus {
+        outline: none;
+        border-color: $color-accent;
+        box-shadow: 0 0 0 3px rgba($color-accent, 0.15);
+    }
+
+    &::placeholder {
+        color: $color-text-muted;
+    }
+}
+
+@mixin button-base {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-sm;
+    padding: $space-sm $space-lg;
+    border: none;
+    border-radius: $radius-md;
+    font-family: $font-primary;
+    font-size: $font-size-sm;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color $transition-fast, transform $transition-fast, box-shadow $transition-fast;
+
+    &:active {
+        transform: translateY(1px);
+    }
+}
+
+@mixin respond-to($bp) {
+    @if $bp == mobile {
+        @media (max-width: $bp-mobile) { @content; }
+    } @else if $bp == tablet {
+        @media (max-width: $bp-tablet) { @content; }
+    } @else if $bp == desktop {
+        @media (max-width: $bp-desktop) { @content; }
+    }
+}
+
+@mixin truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
